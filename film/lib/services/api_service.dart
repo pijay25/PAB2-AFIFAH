@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   static const String baseUrl = "https://api.themoviedb.org/3";
-  static const String apiKey = '1f0b97c4ffecaefa9d1cb0e5f2c68bee';
+  static const String apiKey = '7e20e9f0d78c76164817bf1765aafa8e';
 
   Future<List<Map<String, dynamic>>> getAllMovies() async {
     final response = await http.get(
@@ -13,7 +13,6 @@ class ApiService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
-  // getTrendingMovies
   Future<List<Map<String, dynamic>>> getTrendingMovies() async {
     final response = await http.get(
       Uri.parse("$baseUrl/trending/movie/week?api_key=$apiKey"),
@@ -22,10 +21,18 @@ class ApiService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
-  // getPopularMovies
   Future<List<Map<String, dynamic>>> getPopularMovies() async {
     final response = await http.get(
       Uri.parse("$baseUrl/movie/popular?api_key=$apiKey"),
+    );
+    final data = json.decode(response.body);
+    return List<Map<String, dynamic>>.from(data['results']);
+  }
+
+  // ✅ Tambahkan fungsi baru di bawah ini
+  Future<List<Map<String, dynamic>>> searchMovies(String query) async {
+    final response = await http.get(
+      Uri.parse("$baseUrl/search/movie?api_key=$apiKey&query=$query"),
     );
     final data = json.decode(response.body);
     return List<Map<String, dynamic>>.from(data['results']);
