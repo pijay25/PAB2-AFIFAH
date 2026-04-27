@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import "package:flutter/material.dart";
 import "package:firebase_database/firebase_database.dart";
-import "package:mdpgold/services/gold_services.dart";
+import "package:mdp_gold/services/gold_services.dart";
 
 class PriceListScreen extends StatefulWidget {
   const PriceListScreen({super.key});
