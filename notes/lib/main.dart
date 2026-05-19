@@ -9,7 +9,7 @@ import 'services/fcm_service.dart';
 // Background message handler (must be top-level function)
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firabase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   debugPrint('Handling a background message: ${message.messageId}');
   
   // If it's a data-only message (no notification object), we manually show it
